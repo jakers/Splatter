@@ -52,35 +52,11 @@ public class HexTile : MonoBehaviour {
 	}
 
 	public static Color GetColor(PaintColor paint) {
-		string colorResPath = "Materials/Colors/";
-		string color = "";
-		Material mat;
-
-		switch (paint) {
-		case PaintColor.BLUE:
-			color = "Blue";
-			break;
-		case PaintColor.RED:
-			color = "Red";
-			break;
-		case PaintColor.ORANGE:
-			color = "Orange";
-			break;
-		case PaintColor.YELLOW:
-			color = "Yellow";
-			break;
-		case PaintColor.PURPLE:
-			color = "Purple";
-			break;
-		case PaintColor.GREEN:
-			color = "Green";
-			break;
-		}
-
-		mat = Resources.Load(colorResPath + color, typeof(Material)) as Material;
-
+		string colorResPath = "Materials/Colors/" + paint.ToString();
+		Material mat = Resources.Load(colorResPath, typeof(Material)) as Material;
 		return mat.color;
 	}
+
 
 
 

@@ -35,19 +35,19 @@ public class LevelLoader : MonoBehaviour {
 
 		if (LevelIsLocked ()) {
 			button.interactable = false;
-			button.image.sprite = Resources.Load ("Sprites/red", typeof(Sprite)) as Sprite;
+			button.image.sprite = Resources.Load ("Sprites/Paints/red", typeof(Sprite)) as Sprite;
 			button.image.sprite = null;
 			button.image.color = new Color (0F, 0F, 0F, 0F);
 			text.color = new Color (0F, 0F, 0F, 0F);
 
 		} else if (LevelIsUnlockedButNotBeaten ()) {
 			button.interactable = true;
-			button.image.sprite = Resources.Load ("Sprites/blue", typeof(Sprite)) as Sprite;
+			button.image.sprite = Resources.Load ("Sprites/Paints/blue", typeof(Sprite)) as Sprite;
 			text.color = HexTile.GetColor (PaintColor.ORANGE);
 			button.image.color = Color.white;
 		} else {
 			button.interactable = true;
-			button.image.sprite = Resources.Load ("Sprites/green", typeof(Sprite)) as Sprite;
+			button.image.sprite = Resources.Load ("Sprites/Paints/green", typeof(Sprite)) as Sprite;
 			text.color = HexTile.GetColor (PaintColor.RED);
 			button.image.color = Color.white;
 		}

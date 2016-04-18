@@ -81,9 +81,6 @@ public class DraggingPaint : MonoBehaviour {
 					image.sprite = colorSprites [GetColorIndex ()];
 					image.color = Color.white;
 
-					//r.gameObject.transform.localScale = new Vector3 (0.5f, 0.5f, 1f);
-
-
 					if (r.gameObject.CompareTag ("LeftMixing")) {
 						icon.mixer.leftColor = icon;
 					} else if (r.gameObject.CompareTag ("RightMixing")) {
@@ -103,7 +100,53 @@ public class DraggingPaint : MonoBehaviour {
 		GetComponent<Image>().sprite = paintIcon.GetComponent<Image> ().sprite;
 	}
 
+	public Sprite GetPaintSprite(PaintColor color) {
+		string paintSpritePath = "Sprites/Paints/";
+		Debug.Log ("GetPaintSprite: " + color.ToString());
+		switch(color) {
+		case PaintColor.RED:
+			paintSpritePath += "red";
+			break;
+		case PaintColor.BLUE:
+			paintSpritePath += "blue";
+			break;
+		case PaintColor.YELLOW:
+			paintSpritePath += "yellow";
+			break;
+		case PaintColor.ORANGE:
+			paintSpritePath += "orange";
+			break;
+		case PaintColor.GREEN:
+			paintSpritePath += "green";
+			break;
+		case PaintColor.PURPLE:
+			paintSpritePath += "purple";
+			break;
+		case PaintColor.AMBER:
+			paintSpritePath += "amber";
+			break;
+		case PaintColor.CHARTREUSE:
+			paintSpritePath += "chartreuse";
+			break;
+		case PaintColor.MAGENTA:
+			paintSpritePath += "magenta";
+			break;
+		case PaintColor.TEAL:
+			paintSpritePath += "teal";
+			break;
+		case PaintColor.VERMILLION:
+			paintSpritePath += "vermillion";
+			break;
+		default:
+			paintSpritePath += "red";
+			break;
+		}
+		return Resources.Load (paintSpritePath, typeof(Sprite)) as Sprite;
+	}
+
+
 	public int GetColorIndex() {
+		GetPaintSprite (PaintColor.AMBER);
 		int index = 0;
 
 		switch(color) {
@@ -124,6 +167,21 @@ public class DraggingPaint : MonoBehaviour {
 			break;
 		case PaintColor.PURPLE:
 			index = 5;
+			break;
+		case PaintColor.AMBER:
+			index = 6;
+			break;
+		case PaintColor.CHARTREUSE:
+			index = 7;
+			break;
+		case PaintColor.MAGENTA:
+			index = 8;
+			break;
+		case PaintColor.TEAL:
+			index = 9;
+			break;
+		case PaintColor.VERMILLION:
+			index = 10;
 			break;
 		default:
 			index = 0;

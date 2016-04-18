@@ -11,7 +11,6 @@ public class MixerManager : MonoBehaviour
 	public GameObject paintIconPrefab;
 	public List<Sprite> colorSprites;
 
-	// Use this for initialization
 	void Start ()
 	{
 		leftColor = null;
@@ -32,7 +31,6 @@ public class MixerManager : MonoBehaviour
 					bool colorAlreadyExistsInPallet = false;
 					foreach (PaintIcon icon in colors) {
 						if (icon.paintColor == mixedColor) {
-							Debug.Log ("Color already Exists");
 							icon.count++;
 							icon.textCount.text = icon.count.ToString ();
 							colorAlreadyExistsInPallet = true;
@@ -47,7 +45,7 @@ public class MixerManager : MonoBehaviour
 						icon.textCount.text = icon.count.ToString();
 						icon.paintColor = mixedColor;
 						icon.GetComponentInChildren<Text> ().color = HexTile.GetColor(mixedColor);
-						go.GetComponent<Image> ().sprite = colorSprites [GetColorIndex (mixedColor)];
+						go.GetComponent<Image> ().sprite = Resources.Load ("Sprites/Paints/" + mixedColor.ToString(), typeof(Sprite)) as Sprite;
 						go.transform.SetParent (pallet.transform );
 						go.transform.localScale = Vector3.one;
 					}
@@ -62,54 +60,4 @@ public class MixerManager : MonoBehaviour
 			}
 		}
 	}
-
-	public int GetColorIndex(PaintColor color) {
-		int index = 0;
-
-		switch(color) {
-		case PaintColor.RED:
-			index = 0;
-			break;
-		case PaintColor.BLUE:
-			index = 1;
-			break;
-		case PaintColor.YELLOW:
-			index = 2;
-			break;
-		case PaintColor.ORANGE:
-			index = 3;
-			break;
-		case PaintColor.GREEN:
-			index = 4;
-			break;
-		case PaintColor.PURPLE:
-			index = 5;
-			break;
-
-		case PaintColor.AMBER:
-			index = 6;
-			break;
-		case PaintColor.CHARTREUSE:
-			index = 7;
-			break;
-		case PaintColor.MAGENTA:
-			index = 8;
-			break;
-		case PaintColor.TEAL:
-			index = 9;
-			break;
-		case PaintColor.VERMILLION:
-			index = 10;
-			break;
-		case PaintColor.VIOLET:
-			index = 11;
-			break;
-		default:
-			index = 0;
-			break;
-		}
-		return index;
-	}
-
-
 }
